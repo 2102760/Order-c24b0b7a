@@ -48,8 +48,8 @@
 
     <table>
         <thead>
-            <th><a href="index.php?sort='title'">Titel</a></th>
-            <th><a href="index.php?sort='rating'">Rating</a></th>
+            <th><a href="index.php?sort='title'&<?php if (isset($_GET['sortM'])) { echo 'sortM=' . $_GET['sortM']; }?>">Titel</a></th>
+            <th><a href="index.php?sort='rating'&<?php if (isset($_GET['sortM'])) { echo 'sortM=' . $_GET['sortM']; }?>">Rating</a></th>
             <th></th>
         </thead>
         <tbody>
@@ -84,16 +84,16 @@
 
     <table>
         <thead>
-            <th><a href="index.php?sort='title'">Titel</a></th>
-            <th><a href="index.php?sort='duration'">Duur</a></th>
+            <th><a href="index.php?sortM='title'&<?php if (isset($_GET['sort'])) { echo 'sort=' . $_GET['sort']; }?>">Titel</a></th>
+            <th><a href="index.php?sortM='duration'&<?php if (isset($_GET['sort'])) { echo 'sort=' . $_GET['sort']; }?>">Duur</a></th>
             <th></th>
         </thead>
         <tbody>
             <?php
-            if(isset($_GET['sort'])){
-                if ($_GET['sort'] === "'title'"){
+            if(isset($_GET['sortM'])){
+                if ($_GET['sortM'] === "'title'"){
                     $rows = select('SELECT * FROM films ORDER BY title ASC');
-                } elseif ($_GET['sort'] === "'duration'"){
+                } elseif ($_GET['sortM'] === "'duration'"){
                     $rows = select('SELECT * FROM films ORDER BY duur ASC');
                 }
             } else {
